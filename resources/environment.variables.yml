@@ -1,0 +1,12 @@
+BASE_URL: https://simple-crm-hcur.vercel.app/
+
+BROWSER: chrome
+
+
+VALID_EMAIL: kim@gmail.com
+VALID_PASSWORD: kimcam17
+
+
+CUSTOMER_NAME: Nguyen Van C
+CUSTOMER_PHONE: 0909123456
+CUSTOMER_EMAIL: nguyenvana@gmail.com
