@@ -61,7 +61,7 @@ ${BASE_URL}    https://simple-crm-hcur.vercel.app/
 
 TC01 Login Success
 
-     Click Add Customer
+     
     # Nhập email hợp lệ
     Enter Email    kim@gmail.com
 
@@ -138,7 +138,7 @@ TC03 Login Wrong Email
 
 
     # Kiểm tra thông báo lỗi email
-    Page Should Contain    Email không tồn tại
+    Page Should Contain    Sai email
 
 
 

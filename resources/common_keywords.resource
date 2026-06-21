@@ -8,63 +8,43 @@ Variables    environment.variables.yml
 
 *** Keywords ***
 
-
 Open Browser To Application
-
 
     Open Browser
     ...    ${BASE_URL}
     ...    ${BROWSER}
 
-
     Maximize Browser Window
 
-
     Sleep    2s
-
-
 
 
 
 Open Browser And Login
 
-
     Open Browser To Application
-
 
     Login CRM
 
 
 
-
-
 Close Application
-
 
     Close All Browsers
 
 
 
-
-
 Reload Page
 
-
-    Reload Page
-
-
+    SeleniumLibrary.Reload Page
 
 
 
 Go To Login Page
 
-
     Go To    ${BASE_URL}
 
-
     Sleep    2s
-
-
 
 
 

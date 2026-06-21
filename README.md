@@ -1,29 +1,24 @@
 # CRM Customer Management - QA Automation Framework
 
-**Author:** KimCam  
+**Author:** KimCam
 
 ---
 
-#  Project Overview
+# Project Overview
 
-Framework kiểm thử tự động cho hệ thống:
+Automation Testing Framework cho hệ thống:
 
 **CRM Customer Management System**
 
-Framework được xây dựng theo mô hình:
-
-- Robot Framework
-- SeleniumLibrary
-- Page Object Model (POM)
-- Python
-
+Framework sử dụng để tự động kiểm thử giao diện Web Application.
 
 Mục tiêu:
 
-- Tự động kiểm thử giao diện web
-- Kiểm tra các chức năng CRM
-- Tạo bộ test regression
-- Sinh báo cáo test tự động
+- Automation UI Testing
+- Kiểm thử chức năng CRM
+- Validate form input
+- Regression Testing
+- Generate Test Report
 
 
 ---
@@ -32,46 +27,61 @@ Mục tiêu:
 
 
 | Technology | Usage |
-|---|---|
-| Python | Programming language |
-| Robot Framework | Test automation framework |
-| SeleniumLibrary | Browser automation |
-| ChromeDriver | WebDriver |
-| YAML | Environment configuration |
-| POM | Test architecture |
+|-|-|
+| Python | Programming Language |
+| Robot Framework | Automation Framework |
+| SeleniumLibrary | Web Automation |
+| ChromeDriver | Browser Driver |
+| YAML | Environment Configuration |
+| Page Object Model | Test Architecture |
 
 
 ---
 
-# System Requirements
+# Requirements
 
 
 | Tool | Version |
 |-|-|
 | Python | 3.10+ |
-| Chrome | 120+ |
-| ChromeDriver | Match Chrome version |
-| pip | 23+ |
+| Google Chrome | Latest |
+| ChromeDriver | Match Chrome |
 | Robot Framework | 7.x |
 
+
+Check version:
+
+
+```bash
+python --version
+
+robot --version
+```
 
 ---
 
 # Installation
 
 
-## 1. Clone project
+## Clone Repository
 
 
 ```bash
-git clone <https://github.com/DAU0526/Kimcam_quanlykhachhang_Automation.git>
+git clone https://github.com/DAU0526/Kimcam_quanlykhachhang_Automation.git
+```
 
+
+Move to project:
+
+
+```bash
+cd Kimcam_quanlykhachhang_Automation
 ```
 
 
 ---
 
-## 2. Create Virtual Environment
+## Create Virtual Environment
 
 
 Windows:
@@ -79,29 +89,24 @@ Windows:
 
 ```bash
 python -m venv venv
-```
 
-
-Activate:
-
-
-```bash
 venv\Scripts\activate
 ```
-
 
 
 Linux / Mac:
 
 
 ```bash
+python3 -m venv venv
+
 source venv/bin/activate
 ```
 
 
 ---
 
-## 3. Install dependencies
+## Install Libraries
 
 
 ```bash
@@ -109,21 +114,14 @@ pip install -r requirements.txt
 ```
 
 
-Check:
-
-
-```bash
-robot --version
-```
-
-
 ---
 
-#  Project Structure
+# Project Structure
 
 
 ```
-kimcam_quanlykhachhang
+Kimcam_quanlykhachhang_Automation
+
 │
 ├── tests
 │
@@ -142,85 +140,136 @@ kimcam_quanlykhachhang
 │   ├── common_keywords.resource
 │   │
 │   └── page_objects
-│       │
-│       ├── HomePage.resource
+│
 │       ├── LoginPage.resource
 │       ├── RegisterPage.resource
+│       ├── HomePage.resource
 │       └── CustomerPage.resource
 │
 │
 ├── locators
 │
-│   ├── HomePageLocators.py
 │   ├── LoginPageLocators.py
 │   ├── RegisterPageLocators.py
+│   ├── HomePageLocators.py
 │   └── CustomerPageLocators.py
-│
-│
-├── results
-│
-│   ├── output.xml
-│   ├── log.html
-│   └── report.html
 │
 │
 ├── environment.variables.yml
 │
 ├── requirements.txt
 │
-└── README.md
+├── README.md
+│
+└── results
+
+```
+
+---
+
+# Automation Architecture
+
+
+```
+Test Cases
+
+      |
+
+      v
+
+Common Keywords
+
+      |
+
+      v
+
+Page Objects
+
+      |
+
+      v
+
+Locators
+
+      |
+
+      v
+
+CRM Application
 
 ```
 
 
 ---
 
-#  Test Coverage
+# Test Coverage
 
 
-##  Authentication
+# Authentication Testing
 
 
-## Login Test
+## Login
 
 
 File:
+
 
 ```
 tests/LoginTests.robot
 ```
 
 
-Test cases:
+Test Cases:
 
 
-| Test Case | Description |
+| ID | Description |
 |-|-|
 | TC01 | Login success |
 | TC02 | Wrong password |
 | TC03 | Wrong email |
 | TC04 | Empty email |
 | TC05 | Empty password |
-| TC06 | Invalid email format |
+| TC06 | Wrong password format |
+
+
+---
+
+## Logout
+
+
+File:
+
+
+```
+tests/LogoutTests.robot
+```
+
+
+Test:
+
+
+| ID | Description |
+|-|-|
 | TC07 | Logout after login |
 
 
 ---
 
-## Register Test
+## Register
 
 
 File:
+
 
 ```
 tests/RegisterTests.robot
 ```
 
 
-Test cases:
+Test Cases:
 
 
-| Test Case | Description |
+| ID | Description |
 |-|-|
 | TC01 | Register success |
 | TC02 | Duplicate email |
@@ -228,51 +277,17 @@ Test cases:
 | TC04 | Empty email |
 | TC05 | Empty password |
 | TC06 | Weak password |
-| TC07 | Invalid email |
+| TC07 | Wrong email format |
 | TC08 | Valid phone |
 | TC09 | Empty phone |
 | TC10 | Invalid phone |
-| TC11 | Password not match |
+| TC11 | Password mismatch |
 | TC12 | Empty confirm password |
 
 
 ---
 
-#  Home Page Testing
-
-
-File:
-
-```
-resources/page_objects/HomePage.resource
-```
-
-
-Home Page kiểm thử:
-
-
-- Hiển thị Dashboard
-- Hiển thị menu
-- Điều hướng Customer
-- Logout
-- Kiểm tra trạng thái đăng nhập
-
-
-Ví dụ:
-
-
-```robot
-Click Customer Menu
-
-Click Logout
-
-Verify Dashboard
-```
-
-
----
-
-#  Customer Management
+# Customer Management Testing
 
 
 ## Create Customer
@@ -286,15 +301,18 @@ tests/CustomerCreateTests.robot
 ```
 
 
-Test:
+Coverage:
 
 
-- Add customer success
-- Empty name
-- Empty email
-- Empty phone
-- Invalid email
-- Invalid phone
+| ID | Description |
+|-|-|
+| TC01 | Create customer success |
+| TC02 | Empty name |
+| TC03 | Empty email |
+| TC04 | Empty phone |
+| TC05 | Empty address |
+| TC06 | Status Contacted |
+| TC07 | Status Potential |
 
 
 ---
@@ -310,11 +328,18 @@ tests/CustomerSearchTests.robot
 ```
 
 
-Test:
+Coverage:
 
 
-- Search existing customer
-- Search no result
+| ID | Description |
+|-|-|
+| TC01 | Search by name |
+| TC02 | Search no result |
+| TC03 | Empty keyword |
+| TC04 | Search by email |
+| TC05 | Search by phone |
+| TC06 | Special character |
+| TC07 | Partial name |
 
 
 ---
@@ -330,10 +355,12 @@ tests/CustomerUpdateTests.robot
 ```
 
 
-Test:
+Coverage:
 
 
-- Update customer information
+| ID | Description |
+|-|-|
+| TC01 | Update customer name success |
 
 
 ---
@@ -349,18 +376,49 @@ tests/CustomerDeleteTests.robot
 ```
 
 
-Test:
+Coverage:
 
 
-- Delete customer
+| ID | Description |
+|-|-|
+| TC01 | Delete customer success |
+| TC02 | Cancel delete |
+| TC03 | Delete multiple customers |
 
 
 ---
 
-#  Running Tests
+# Total Test Cases
 
 
-## Run all tests
+```
+Authentication
+
+Login        6
+Logout       1
+Register    12
+
+
+Customer
+
+Create       7
+Search       7
+Update       1
+Delete       3
+
+
+=================
+Total: 37 Tests
+=================
+```
+
+
+---
+
+# Running Tests
+
+
+## Run All Tests
 
 
 ```bash
@@ -370,7 +428,7 @@ robot -d results tests
 
 ---
 
-## Run Login
+## Run Login Test
 
 
 ```bash
@@ -380,7 +438,7 @@ robot -d results tests/LoginTests.robot
 
 ---
 
-## Run Register
+## Run Register Test
 
 
 ```bash
@@ -390,35 +448,35 @@ robot -d results tests/RegisterTests.robot
 
 ---
 
-## Run Customer
+## Run Customer Test
 
 
 ```bash
-robot -d results tests/CustomerCreateTests.robot
+robot -d results tests/Customer*.robot
 ```
 
 
 ---
 
-#  Test Report
+# Test Report
 
 
-Sau khi chạy:
+After execution:
 
 
 ```
 results/
 
-output.xml
+├── output.xml
 
-log.html
+├── log.html
 
-report.html
+└── report.html
 
 ```
 
 
-Mở report:
+Open report:
 
 
 Windows:
@@ -431,68 +489,25 @@ start results/log.html
 
 ---
 
-#  Framework Architecture
-
-
-```
-Test Case
-
-    |
-
-    v
-
-Common Keywords
-
-    |
-
-    v
-
-Page Objects
-
-(HomePage
- LoginPage
- RegisterPage
- CustomerPage)
-
-    |
-
-    v
-
-Locators
-
-    |
-
-    v
-
-CRM Application
-
-```
-
-
----
-
-#  Coding Convention
+# Page Object Model
 
 
 ## Locator Layer
 
 
-Chỉ chứa:
-
+Contains:
 
 - XPath
 - CSS Selector
 
 
-Ví dụ:
+Example:
 
 
 ```python
-LOGIN_BUTTON = "xpath=//button"
+LOGIN_BUTTON =
+"xpath=//button"
 ```
-
-
-Không chứa logic.
 
 
 ---
@@ -500,15 +515,14 @@ Không chứa logic.
 ## Page Object Layer
 
 
-Chứa:
+Contains:
 
-
-- Click
-- Input
+- Click action
+- Input action
 - Navigation
 
 
-Ví dụ:
+Example:
 
 
 ```robot
@@ -524,10 +538,13 @@ Click Login
 ## Test Layer
 
 
-Chỉ gọi keyword:
+Only contains:
+
+- Test scenario
+- Expected result
 
 
-Ví dụ:
+Example:
 
 
 ```robot
@@ -539,12 +556,9 @@ Click Login
 ```
 
 
-Không viết XPath trực tiếp.
-
-
 ---
 
-#  Environment Configuration
+# Environment Configuration
 
 
 File:
@@ -555,37 +569,31 @@ environment.variables.yml
 ```
 
 
-Ví dụ:
+Example:
 
 
 ```yaml
 BASE_URL: https://simple-crm-hcur.vercel.app/
 
 BROWSER: chrome
-
-
-VALID_EMAIL: kim@gmail.com
-
-VALID_PASSWORD: kimcam17
 ```
 
 
 ---
 
-# ❗ Troubleshooting
+# Troubleshooting
 
 
-## Element not found
+## Element Not Found
 
 
-Nguyên nhân:
+Cause:
+
+- Wrong XPath
+- Page loading slow
 
 
-- XPath sai
-- Page chưa load
-
-
-Fix:
+Solution:
 
 
 ```robot
@@ -595,10 +603,10 @@ Wait Until Element Is Visible
 
 ---
 
-## No keyword found
+## Keyword Not Found
 
 
-Kiểm tra Resource:
+Check resource:
 
 
 ```robot
@@ -609,50 +617,72 @@ Resource
 
 ---
 
-## No browser is open
+## Browser Not Open
 
 
-Kiểm tra:
+Check:
 
 
 ```robot
 Suite Setup
-Open Browser To Application
 ```
 
 
 ---
 
-# 📈 Current Automation Status
+# Git Workflow
 
 
-Authentication:
+Check changes:
 
-```
-Login       PASS
 
-Register    PASS
-
-Logout      PASS
+```bash
+git status
 ```
 
 
-Customer:
+Add:
 
+
+```bash
+git add .
 ```
-Create
 
-Search
 
-Update
+Commit:
 
-Delete
+
+```bash
+git commit -m "Update automation tests"
 ```
+
+
+Push:
+
+
+```bash
+git push origin main
+```
+
+
+---
+
+# Future Improvements
+
+
+- Add Screenshot On Failure
+- Add Selenium Explicit Wait
+- Add GitHub Actions CI/CD
+- Add Allure Report
+- Add Parallel Execution
+- Add Test Data Management
 
 
 ---
 
 # Author
+
+
 KimCam
 
 QA Automation Internship Project

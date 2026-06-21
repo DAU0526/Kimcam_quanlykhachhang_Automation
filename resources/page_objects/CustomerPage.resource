@@ -8,6 +8,14 @@ Variables    ../locators/CustomerPageLocators.py
 
 *** Keywords ***
 
+Go To Add Customer Page
+
+    Go To    ${BASE_URL}/add
+
+    Wait Until Element Is Visible
+    ...    xpath=//input[@name='name']
+    ...    10s
+
 
 Click Add Customer
 
