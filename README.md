@@ -73,12 +73,6 @@ git clone https://github.com/DAU0526/Kimcam_quanlykhachhang_Automation.git
 
 Move to project:
 
-
-```bash
-cd Kimcam_quanlykhachhang_Automation
-```
-
-
 ---
 
 ## Create Virtual Environment
