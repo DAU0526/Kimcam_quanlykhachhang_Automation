@@ -28,3 +28,5 @@ CONFIRM_PASSWORD_INPUT = "xpath=//input[@name='confirmPassword']"
 
 # Nút đăng ký
 REGISTER_BUTTON = "xpath=//button[contains(text(),'Đăng ký')]"
+
+ERROR_MESSAGE = "xpath=//p[@class='error']"

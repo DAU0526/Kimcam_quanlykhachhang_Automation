@@ -5,17 +5,23 @@ Library    SeleniumLibrary
 Variables    ../locators/HomePageLocators.py
 
 
-
 *** Keywords ***
 
+Verify Logout Button Visible
 
-# Click nút Đăng xuất
+    Wait Until Element Is Visible
+    ...    ${LOGOUT_BUTTON}
+    ...    20s
+
+    Element Should Be Visible
+    ...    ${LOGOUT_BUTTON}
+
+
 Click Logout
 
-    # Chờ nút logout hiển thị
-    Wait Until Element Is Visible    ${LOGOUT_BUTTON}    10s
+    Wait Until Element Is Visible
+    ...    ${LOGOUT_BUTTON}
+    ...    10s
 
-
-    # Click logout
-    Click Element    ${LOGOUT_BUTTON}
-    Sleep    2s    
+    Click Element
+    ...    ${LOGOUT_BUTTON}

@@ -10,30 +10,30 @@ Automation Testing Framework cho hệ thống:
 
 **CRM Customer Management System**
 
-Framework sử dụng để tự động kiểm thử giao diện Web Application.
+Framework được xây dựng để tự động kiểm thử Web Application bằng Robot Framework.
 
 Mục tiêu:
 
 - Automation UI Testing
-- Kiểm thử chức năng CRM
-- Validate form input
+- Functional Testing
 - Regression Testing
+- Form Validation Testing
 - Generate Test Report
+- Maintainable Test Automation Architecture
 
 
 ---
 
 # Technology Stack
 
-
 | Technology | Usage |
 |-|-|
-| Python | Programming Language |
-| Robot Framework | Automation Framework |
+| Python 3.10+ | Programming Language |
+| Robot Framework 7.x | Automation Framework |
 | SeleniumLibrary | Web Automation |
 | ChromeDriver | Browser Driver |
 | YAML | Environment Configuration |
-| Page Object Model | Test Architecture |
+| Page Object Model | Test Design Pattern |
 
 
 ---
@@ -41,15 +41,16 @@ Mục tiêu:
 # Requirements
 
 
+## Required Software
+
 | Tool | Version |
 |-|-|
 | Python | 3.10+ |
 | Google Chrome | Latest |
-| ChromeDriver | Match Chrome |
 | Robot Framework | 7.x |
 
 
-Check version:
+Check installation:
 
 
 ```bash
@@ -71,11 +72,17 @@ git clone https://github.com/DAU0526/Kimcam_quanlykhachhang_Automation.git
 ```
 
 
-Move to project:
+Go to project folder:
+
+
+```bash
+cd Kimcam_quanlykhachhang_Automation
+```
+
 
 ---
 
-## Create Virtual Environment
+# Create Virtual Environment
 
 
 Windows:
@@ -100,7 +107,7 @@ source venv/bin/activate
 
 ---
 
-## Install Libraries
+# Install Dependencies
 
 
 ```bash
@@ -122,7 +129,6 @@ Kimcam_quanlykhachhang_Automation
 │   ├── LoginTests.robot
 │   ├── LogoutTests.robot
 │   ├── RegisterTests.robot
-│   │
 │   ├── CustomerCreateTests.robot
 │   ├── CustomerSearchTests.robot
 │   ├── CustomerUpdateTests.robot
@@ -134,7 +140,7 @@ Kimcam_quanlykhachhang_Automation
 │   ├── common_keywords.resource
 │   │
 │   └── page_objects
-│
+│       │
 │       ├── LoginPage.resource
 │       ├── RegisterPage.resource
 │       ├── HomePage.resource
@@ -153,11 +159,10 @@ Kimcam_quanlykhachhang_Automation
 │
 ├── requirements.txt
 │
-├── README.md
-│
-└── results
+└── README.md
 
 ```
+
 
 ---
 
@@ -165,29 +170,29 @@ Kimcam_quanlykhachhang_Automation
 
 
 ```
-Test Cases
+Test Cases (.robot)
 
-      |
+        |
 
-      v
+        v
 
 Common Keywords
 
-      |
+        |
 
-      v
+        v
 
 Page Objects
 
-      |
+        |
 
-      v
+        v
 
 Locators
 
-      |
+        |
 
-      v
+        v
 
 CRM Application
 
@@ -202,81 +207,71 @@ CRM Application
 # Authentication Testing
 
 
-## Login
+## Login Testing
 
 
 File:
-
 
 ```
 tests/LoginTests.robot
 ```
 
 
-Test Cases:
-
-
-| ID | Description |
+| ID | Test Case |
 |-|-|
-| TC01 | Login success |
-| TC02 | Wrong password |
-| TC03 | Wrong email |
-| TC04 | Empty email |
-| TC05 | Empty password |
-| TC06 | Wrong password format |
+| TC01 | Login Success |
+| TC02 | Wrong Password |
+| TC03 | Wrong Email |
+| TC04 | Empty Email |
+| TC05 | Empty Password |
+| TC06 | Invalid Format |
+| TC07 | Logout After Login |
+
 
 
 ---
 
-## Logout
+## Logout Testing
 
 
 File:
-
 
 ```
 tests/LogoutTests.robot
 ```
 
 
-Test:
-
-
-| ID | Description |
+| ID | Test Case |
 |-|-|
-| TC07 | Logout after login |
+| TC01 | Logout Success |
 
 
 ---
 
-## Register
+## Register Testing
 
 
 File:
-
 
 ```
 tests/RegisterTests.robot
 ```
 
 
-Test Cases:
-
-
-| ID | Description |
+| ID | Test Case |
 |-|-|
-| TC01 | Register success |
-| TC02 | Duplicate email |
-| TC03 | Empty name |
-| TC04 | Empty email |
-| TC05 | Empty password |
-| TC06 | Weak password |
-| TC07 | Wrong email format |
-| TC08 | Valid phone |
-| TC09 | Empty phone |
-| TC10 | Invalid phone |
-| TC11 | Password mismatch |
-| TC12 | Empty confirm password |
+| TC01 | Register Success |
+| TC02 | Duplicate Email |
+| TC03 | Empty Name |
+| TC04 | Empty Email |
+| TC05 | Empty Password |
+| TC06 | Weak Password |
+| TC07 | Wrong Email Format |
+| TC08 | Valid Phone |
+| TC09 | Empty Phone |
+| TC10 | Invalid Phone |
+| TC11 | Password Not Match |
+| TC12 | Empty Confirm Password |
 
 
 ---
@@ -289,22 +284,18 @@ Test Cases:
 
 File:
 
-
 ```
 tests/CustomerCreateTests.robot
 ```
 
 
-Coverage:
-
-
-| ID | Description |
+| ID | Test Case |
 |-|-|
-| TC01 | Create customer success |
-| TC02 | Empty name |
-| TC03 | Empty email |
-| TC04 | Empty phone |
-| TC05 | Empty address |
+| TC01 | Create Success |
+| TC02 | Empty Name |
+| TC03 | Empty Email |
+| TC04 | Empty Phone |
+| TC05 | Empty Address |
 | TC06 | Status Contacted |
 | TC07 | Status Potential |
 
@@ -316,24 +307,20 @@ Coverage:
 
 File:
 
-
 ```
 tests/CustomerSearchTests.robot
 ```
 
 
-Coverage:
-
-
-| ID | Description |
+| ID | Test Case |
 |-|-|
-| TC01 | Search by name |
-| TC02 | Search no result |
-| TC03 | Empty keyword |
-| TC04 | Search by email |
-| TC05 | Search by phone |
-| TC06 | Special character |
-| TC07 | Partial name |
+| TC01 | Search Success |
+| TC02 | Customer Not Found |
+| TC03 | Empty Keyword |
+| TC04 | Search By Email |
+| TC05 | Search By Phone |
+| TC06 | Special Character |
+| TC07 | Partial Name |
 
 
 ---
@@ -343,18 +330,19 @@ Coverage:
 
 File:
 
-
 ```
 tests/CustomerUpdateTests.robot
 ```
 
 
-Coverage:
-
-
-| ID | Description |
+| ID | Test Case |
 |-|-|
-| TC01 | Update customer name success |
+| TC01 | Update Success |
+| TC02 | Empty Name |
+| TC03 | Invalid Email |
+| TC04 | Invalid Phone |
+| TC05 | Same Data |
+| TC06 | Multiple Update |
 
 
 ---
@@ -364,20 +352,15 @@ Coverage:
 
 File:
 
-
 ```
 tests/CustomerDeleteTests.robot
 ```
 
 
-Coverage:
-
-
-| ID | Description |
+| ID | Test Case |
 |-|-|
-| TC01 | Delete customer success |
-| TC02 | Cancel delete |
-| TC03 | Delete multiple customers |
+| TC01 | Delete Success |
+| TC02 | Cancel Delete |
 
 
 ---
@@ -386,24 +369,21 @@ Coverage:
 
 
 ```
-Authentication
 
-Login        6
-Logout       1
-Register    12
+Login          7
+Logout         1
+Register      12
 
-
-Customer
-
-Create       7
-Search       7
-Update       1
-Delete       3
+Create Customer 7
+Search Customer 7
+Update Customer 6
+Delete Customer 2
 
 
-=================
-Total: 37 Tests
-=================
+====================
+TOTAL: 41 TESTS
+====================
+
 ```
 
 
@@ -422,7 +402,7 @@ robot -d results tests
 
 ---
 
-## Run Login Test
+## Run Login
 
 
 ```bash
@@ -432,7 +412,7 @@ robot -d results tests/LoginTests.robot
 
 ---
 
-## Run Register Test
+## Run Register
 
 
 ```bash
@@ -442,7 +422,7 @@ robot -d results tests/RegisterTests.robot
 
 ---
 
-## Run Customer Test
+## Run Customer Tests
 
 
 ```bash
@@ -455,7 +435,7 @@ robot -d results tests/Customer*.robot
 # Test Report
 
 
-After execution:
+Sau khi chạy:
 
 
 ```
@@ -470,10 +450,16 @@ results/
 ```
 
 
-Open report:
+Mở report:
 
 
 Windows:
+
+```bash
+start results/report.html
+```
+
+hoặc
 
 
 ```bash
@@ -489,7 +475,7 @@ start results/log.html
 ## Locator Layer
 
 
-Contains:
+Chứa:
 
 - XPath
 - CSS Selector
@@ -509,11 +495,12 @@ LOGIN_BUTTON =
 ## Page Object Layer
 
 
-Contains:
+Chứa:
 
-- Click action
-- Input action
+- Click Element
+- Input Text
 - Navigation
+- Validation
 
 
 Example:
@@ -524,6 +511,7 @@ Enter Email
 
 Click Login
 
+Verify Error Message
 ```
 
 
@@ -532,21 +520,19 @@ Click Login
 ## Test Layer
 
 
-Only contains:
+Chỉ chứa:
 
-- Test scenario
-- Expected result
+- Test Scenario
+- Expected Result
 
 
 Example:
 
 
 ```robot
-Enter Email
+Login With Credentials
 
-Enter Password
-
-Click Login
+Verify Customer Found
 ```
 
 
@@ -581,13 +567,13 @@ BROWSER: chrome
 ## Element Not Found
 
 
-Cause:
+Nguyên nhân:
 
-- Wrong XPath
-- Page loading slow
+- Sai XPath
+- Page load chậm
 
 
-Solution:
+Fix:
 
 
 ```robot
@@ -597,28 +583,35 @@ Wait Until Element Is Visible
 
 ---
 
-## Keyword Not Found
+## Multiple Keyword Found
 
 
-Check resource:
+Nguyên nhân:
+
+Trùng keyword giữa resource.
+
+
+Fix:
+
+Gọi full name:
 
 
 ```robot
-Resource
-../resources/common_keywords.resource
+LoginPage.Login With Credentials
 ```
 
 
 ---
 
-## Browser Not Open
+## Browser Error
 
 
-Check:
+Kiểm tra:
 
 
 ```robot
 Suite Setup
+Suite Teardown
 ```
 
 
@@ -627,8 +620,7 @@ Suite Setup
 # Git Workflow
 
 
-Check changes:
-
+Check:
 
 ```bash
 git status
@@ -647,7 +639,7 @@ Commit:
 
 
 ```bash
-git commit -m "Update automation tests"
+git commit -m "Update automation framework"
 ```
 
 
@@ -664,12 +656,12 @@ git push origin main
 # Future Improvements
 
 
-- Add Screenshot On Failure
-- Add Selenium Explicit Wait
-- Add GitHub Actions CI/CD
-- Add Allure Report
-- Add Parallel Execution
-- Add Test Data Management
+- Screenshot when test fail
+- GitHub Actions CI/CD
+- Allure Report
+- Parallel Execution
+- Test Data Driven
+- API Testing Integration
 
 
 ---

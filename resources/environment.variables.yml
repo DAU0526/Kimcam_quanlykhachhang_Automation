@@ -2,11 +2,21 @@ BASE_URL: https://simple-crm-hcur.vercel.app/
 
 BROWSER: chrome
 
+TIMEOUT: 10s
 
 VALID_EMAIL: kim@gmail.com
 VALID_PASSWORD: kimcam17
 
+INVALID_EMAIL: abc@gmail.com
+INVALID_PASSWORD: 111111
 
-CUSTOMER_NAME: Nguyen Van C
-CUSTOMER_PHONE: 0909123456
-CUSTOMER_EMAIL: nguyenvana@gmail.com
+CUSTOMER_NAME: Nguyen Thi Q
+CUSTOMER_PHONE: 0909123451
+CUSTOMER_EMAIL: nguyenthiq@gmail.com
+CUSTOMER_ADDRESS: Da Nang
+
+REGISTER_NAME: Nguyen Thi Xuan Thu
+REGISTER_PHONE: 0909123111
+REGISTER_PASSWORD: kimcam17
+
+DUPLICATE_EMAIL: kim@gmail.com

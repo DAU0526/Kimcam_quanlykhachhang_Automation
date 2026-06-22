@@ -15,218 +15,269 @@ Test Setup        Go To Login Page
 
 
 TC01 Register Success
+    [Tags]    Positive    Register
 
     Click Register Page
 
-    Enter Register Name    Nguyen Van A
-    Enter Register Email    nguyenvana100@gmail.com
-    Enter Register Phone    0909123456
-    Enter Register Password    kimcam17
-    Enter Confirm Password    kimcam17
+    Register With Information
+    ...    ${REGISTER_NAME}
+    ...    nguyenvana1@gmail.com
+    ...    ${REGISTER_PHONE}
+    ...    ${REGISTER_PASSWORD}
+    ...    ${REGISTER_PASSWORD}
 
-    Click Register
-
-    Sleep    2s
-
-    Run Keyword And Ignore Error    Handle Alert    accept
+    Run Keyword And Ignore Error
+    ...    Handle Alert
+    ...    accept
 
 
 
 TC02 Register Duplicate Email
+    [Tags]    Negative    Register
 
     Click Register Page
 
-    Enter Register Name    Nguyen Van B
-    Enter Register Email    kim@gmail.com
-    Enter Register Phone    0909123456
-    Enter Register Password    kimcam17
-    Enter Confirm Password    kimcam17
+    Register With Information
+    ...    ${REGISTER_NAME}
+    ...    ${DUPLICATE_EMAIL}
+    ...    ${REGISTER_PHONE}
+    ...    ${REGISTER_PASSWORD}
+    ...    ${REGISTER_PASSWORD}
 
-    Click Register
-
-    Sleep    2s
-
-    Run Keyword And Ignore Error    Handle Alert    accept
-
-    Page Should Contain    Email đã tồn tại
+    common_keywords.Verify Error Message
+    ...    Email đã tồn tại
 
 
 
 TC03 Register Empty Name
+    [Tags]    Negative    Register
 
     Click Register Page
 
-    Enter Register Email    test01@gmail.com
-    Enter Register Phone    0909123456
-    Enter Register Password    kimcam17
-    Enter Confirm Password    kimcam17
+    Enter Register Email
+    ...    test01@gmail.com
+
+    Enter Register Phone
+    ...    ${REGISTER_PHONE}
+
+    Enter Register Password
+    ...    ${REGISTER_PASSWORD}
+
+    Enter Confirm Password
+    ...    ${REGISTER_PASSWORD}
 
     Click Register
 
-    Sleep    2s
-
-    Page Should Contain    tên
+    Wait Until Page Contains
+    ...    tên
+    ...    10s
 
 
 
 TC04 Register Empty Email
+    [Tags]    Negative    Register
 
     Click Register Page
 
-    Enter Register Name    Nguyen Van C
-    Enter Register Phone    0909123456
-    Enter Register Password    kimcam17
-    Enter Confirm Password    kimcam17
+    Enter Register Name
+    ...    ${REGISTER_NAME}
+
+    Enter Register Phone
+    ...    ${REGISTER_PHONE}
+
+    Enter Register Password
+    ...    ${REGISTER_PASSWORD}
+
+    Enter Confirm Password
+    ...    ${REGISTER_PASSWORD}
 
     Click Register
 
-    Sleep    2s
-
-    Page Should Contain    Vui lòng nhập email
+    Wait Until Page Contains
+    ...    Vui lòng nhập email
+    ...    10s
 
 
 
 TC05 Register Empty Password
+    [Tags]    Negative    Register
 
     Click Register Page
 
-    Enter Register Name    Nguyen Van D
-    Enter Register Email    test02@gmail.com
-    Enter Register Phone    0909123456
-    Enter Confirm Password    kimcam17
+    Enter Register Name
+    ...    ${REGISTER_NAME}
+
+    Enter Register Email
+    ...    test02@gmail.com
+
+    Enter Register Phone
+    ...    ${REGISTER_PHONE}
+
+    Enter Confirm Password
+    ...    ${REGISTER_PASSWORD}
 
     Click Register
 
-    Sleep    2s
-
-    Page Should Contain    Vui lòng nhập mật khẩu
+    Wait Until Page Contains
+    ...    Vui lòng nhập mật khẩu
+    ...    10s
 
 
 
 TC06 Register Weak Password
+    [Tags]    Negative    Register
 
     Click Register Page
 
-    Enter Register Name    Nguyen Van E
-    Enter Register Email    test03@gmail.com
-    Enter Register Phone    0909123456
+    Register With Information
+    ...    ${REGISTER_NAME}
+    ...    test03@gmail.com
+    ...    ${REGISTER_PHONE}
+    ...    123
+    ...    123
 
-    Enter Register Password    123
-    Enter Confirm Password    123
 
-    Click Register
-
-    Sleep    2s
-
-    Page Should Contain    Đăng ký
+    common_keywords.Verify Error Message
+    ...    Mật khẩu
 
 
 
 TC07 Register Wrong Email
+    [Tags]    Negative    Register
 
     Click Register Page
 
-    Enter Register Name    Nguyen Van F
-    Enter Register Email    abc
-    Enter Register Phone    0909123456
-    Enter Register Password    kimcam17
-    Enter Confirm Password    kimcam17
+    Register With Information
+    ...    ${REGISTER_NAME}
+    ...    abc
+    ...    ${REGISTER_PHONE}
+    ...    ${REGISTER_PASSWORD}
+    ...    ${REGISTER_PASSWORD}
 
-    Click Register
 
-    Sleep    2s
-
-    Page Should Contain    Đăng ký
+    common_keywords.Verify Error Message
+    ...    email
 
 
 
 TC08 Register Valid Phone
+    [Tags]    Positive    Register
 
     Click Register Page
 
-    Enter Register Name    Nguyen Phone
-    Enter Register Email    phone100@gmail.com
-    Enter Register Phone    0912345678
-    Enter Register Password    kimcam17
-    Enter Confirm Password    kimcam17
+    Register With Information
+    ...    ${REGISTER_NAME}
+    ...    phone1@gmail.com
+    ...    ${REGISTER_PHONE}
+    ...    ${REGISTER_PASSWORD}
+    ...    ${REGISTER_PASSWORD}
 
-    Click Register
-
-    Sleep    2s
-
-    Run Keyword And Ignore Error    Handle Alert    accept
+    Run Keyword And Ignore Error
+    ...    Handle Alert
+    ...    accept
 
 
 
 TC09 Empty Phone
+    [Tags]    Negative    Register
 
     Click Register Page
 
-    Enter Register Name    Nguyen Phone
-    Enter Register Email    phone101@gmail.com
 
-    Enter Register Password    kimcam17
-    Enter Confirm Password    kimcam17
+    Enter Register Name
+    ...    ${REGISTER_NAME}
+
+    Enter Register Email
+    ...    phone101@gmail.com
+
+    Enter Register Password
+    ...    ${REGISTER_PASSWORD}
+
+    Enter Confirm Password
+    ...    ${REGISTER_PASSWORD}
+
 
     Click Register
 
-    Sleep    2s
 
-    Page Should Contain    Vui lòng nhập số điện thoại
+    Wait Until Page Contains
+    ...    Vui lòng nhập số điện thoại
+    ...    10s
 
 
 
 TC10 Invalid Phone
+    [Tags]    Negative    Register
 
     Click Register Page
 
-    Enter Register Name    Nguyen Phone
-    Enter Register Email    phone102@gmail.com
 
-    Enter Register Phone    abc
+    Enter Register Name
+    ...    ${REGISTER_NAME}
 
-    Enter Register Password    kimcam17
-    Enter Confirm Password    kimcam17
+    Enter Register Email
+    ...    phone102@gmail.com
+
+    Enter Register Phone
+    ...    abc
+
+    Enter Register Password
+    ...    ${REGISTER_PASSWORD}
+
+    Enter Confirm Password
+    ...    ${REGISTER_PASSWORD}
+
 
     Click Register
 
-    Sleep    2s
 
-    Page Should Contain    số điện thoại
+    Wait Until Page Contains
+    ...    số điện thoại
+    ...    10s
 
 
 
 TC11 Password Not Match
+    [Tags]    Negative    Register
 
     Click Register Page
 
-    Enter Register Name    Nguyen Confirm
-    Enter Register Email    confirm@gmail.com
-    Enter Register Phone    0922222222
 
-    Enter Register Password    kimcam17
-    Enter Confirm Password    12345678
+    Register With Information
+    ...    ${REGISTER_NAME}
+    ...    confirm@gmail.com
+    ...    0922222222
+    ...    ${REGISTER_PASSWORD}
+    ...    12345678
 
-    Click Register
 
-    Sleep    2s
-
-    Page Should Contain    Mật khẩu không khớp
+    common_keywords.Verify Error Message
+    ...    Mật khẩu không khớp
 
 
 
 TC12 Empty Confirm Password
+    [Tags]    Negative    Register
 
     Click Register Page
 
-    Enter Register Name    Nguyen Confirm2
-    Enter Register Email    confirm2@gmail.com
-    Enter Register Phone    0933333333
 
-    Enter Register Password    kimcam17
+    Enter Register Name
+    ...    ${REGISTER_NAME}
+
+    Enter Register Email
+    ...    confirm2@gmail.com
+
+    Enter Register Phone
+    ...    ${REGISTER_PHONE}
+
+    Enter Register Password
+    ...    ${REGISTER_PASSWORD}
+
 
     Click Register
 
-    Sleep    2s
 
-    Page Should Contain    Vui lòng nhập lại mật khẩu
+    Wait Until Page Contains
+    ...    Vui lòng nhập lại mật khẩu
+    ...    10s

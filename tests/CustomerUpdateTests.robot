@@ -1,6 +1,8 @@
 *** Settings ***
 
 Resource    ../resources/common_keywords.resource
+Resource    ../resources/page_objects/CustomerPage.resource
+
 
 Suite Setup       Open Browser And Login
 
@@ -13,34 +15,210 @@ Suite Teardown    Close Application
 
 # ==================================================
 # TC01 UPDATE CUSTOMER SUCCESS
-# Cập nhật tên khách hàng thành công
 # ==================================================
 
 TC01 Update Customer Success
 
-    Go To    ${BASE_URL}
+    [Tags]    Positive    Update
 
-    Wait Until Element Is Visible
-    ...    xpath=(//button[@class='edit-btn'])[1]
-    ...    10s
+
+    Go To Customer List Page
+
+
+    Click Edit Customer
+
+
+    Update Customer Name
+    ...    Updated Customer
+
+
+
+    Verify Customer Found
+    ...    Updated Customer
+
+
+
+
+
+
+# ==================================================
+# TC02 UPDATE EMPTY NAME
+# ==================================================
+
+TC02 Update Empty Name
+
+    [Tags]    Negative    Update
+
+
+    Go To Customer List Page
+
+
+    Click Edit Customer
+
+
+
+    Clear Element Text
+    ...    ${NAME_INPUT}
+
+
 
     Click Element
-    ...    xpath=(//button[@class='edit-btn'])[1]
+    ...    ${UPDATE_BUTTON}
 
-    Wait Until Element Is Visible
-    ...    xpath=//input[@name='name']
-    ...    10s
 
-    Clear Element Text    xpath=//input[@name='name']
 
-    Input Text    xpath=//input[@name='name']    Updated Customer
+    Verify Customer Validation
+    ...    Name is required
+
+
+
+
+
+
+# ==================================================
+# TC03 UPDATE INVALID EMAIL
+# ==================================================
+
+TC03 Update Invalid Email
+
+    [Tags]    Negative    Update
+
+
+    Go To Customer List Page
+
+
+    Click Edit Customer
+
+
+
+    Clear Element Text
+    ...    ${EMAIL_INPUT}
+
+
+
+    Input Text
+    ...    ${EMAIL_INPUT}
+    ...    abc123
+
+
 
     Click Element
-    ...    xpath=//button[contains(text(),'Cập nhật khách hàng')]
-
-    Sleep    2s
-
-    Page Should Contain    Updated Customer
+    ...    ${UPDATE_BUTTON}
 
 
 
+  Verify Customer Validation
+    ...    Please include an '@'
+
+
+
+
+
+
+# ==================================================
+# TC04 UPDATE INVALID PHONE
+# ==================================================
+
+TC04 Update Invalid Phone
+
+    [Tags]    Negative    Update
+
+
+    Go To Customer List Page
+
+
+    Click Edit Customer
+
+
+
+    Clear Element Text
+    ...    ${PHONE_INPUT}
+
+
+
+    Input Text
+    ...    ${PHONE_INPUT}
+    ...    abcxyz
+
+
+
+    Click Element
+    ...    ${UPDATE_BUTTON}
+
+
+
+    Verify Customer Validation
+    ...    Phone must start with 0 and contain exactly 10 digits
+
+
+
+
+
+# ==================================================
+# TC05 UPDATE SAME DATA
+# ==================================================
+
+TC05 Update Same Data
+
+    [Tags]    Positive    Update
+
+
+    Go To Customer List Page
+
+
+    Click Edit Customer
+
+
+
+    Update Customer Name
+    ...    Updated Customer
+
+
+
+    Verify Customer Found
+    ...    Updated Customer
+
+
+
+
+
+
+# ==================================================
+# TC06 UPDATE MULTIPLE TIMES
+# ==================================================
+
+TC06 Update Multiple Times
+
+    [Tags]    Positive    Update
+
+
+    Go To Customer List Page
+
+
+    Click Edit Customer
+
+
+    Update Customer Name
+    ...    Customer One
+
+
+
+    Verify Customer Found
+    ...    Customer One
+
+
+
+    Go To Customer List Page
+
+
+
+    Click Edit Customer
+
+
+    Update Customer Name
+    ...    Customer Two
+
+
+
+    Verify Customer Found
+    ...    Customer Two
