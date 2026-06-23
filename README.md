@@ -140,19 +140,19 @@ Kimcam_quanlykhachhang_Automation
 │   ├── common_keywords.resource
 │   │
 │   └── page_objects
-│       │
-│       ├── LoginPage.resource
-│       ├── RegisterPage.resource
-│       ├── HomePage.resource
-│       └── CustomerPage.resource
-│
-│
-├── locators
-│
-│   ├── LoginPageLocators.py
-│   ├── RegisterPageLocators.py
-│   ├── HomePageLocators.py
-│   └── CustomerPageLocators.py
+│   |   │
+│   |   ├── LoginPage.resource
+│   |   ├── RegisterPage.resource
+│   |   ├── HomePage.resource
+│   |   └── CustomerPage.resource
+│   |
+│   |
+├   |── locators
+│       |
+│       ├── LoginPageLocators.py
+│       ├── RegisterPageLocators.py
+│       ├── HomePageLocators.py
+│       └── CustomerPageLocators.py 
 │
 │
 ├── environment.variables.yml
